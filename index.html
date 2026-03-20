@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitación especial</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      overflow: hidden;
+    }
+    h1 {
+      color: #d81b60;
+      font-size: 36px;
+      animation: latido 1.5s infinite;
+    }
+    @keyframes latido {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .boton {
+      background-color: #d81b60;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      margin: 20px;
+      font-size: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .boton:hover {
+      background-color: #ad1457;
+    }
+    .imagen-romantica {
+      width: 250px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+      animation: aparecer 1.5s ease-out;
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .corazon {
+      position: absolute;
+      color: #d81b60;
+      font-size: 24px;
+      animation: flotar 6s infinite;
+    }
+    @keyframes flotar {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+    .animacion-si {
+      animation: aparecer 0.8s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Imagen romántica -->
+  <img src="https://copilot.microsoft.com/th/id/BCO.dda83e4f-07ee-4b89-b9a9-506e0e73e869.png" 
+       alt="Corazón rosa con flores suaves" 
+       class="imagen-romantica">
+
+  <h1>¿Quieres tener una cita conmigo?</h1>
+  
+  <!-- Botón No visible al inicio -->
+  <button id="btnNo" class="boton" onclick="mostrarSi()">No</button>
+  
+  <!-- Botón Sí oculto al inicio -->
+  <button id="btnSi" class="boton" style="display:none;">Sí</button>
+
+  <script>
+    function mostrarSi() {
+      const btnNo = document.getElementById('btnNo');
+      const btnSi = document.getElementById('btnSi');
+      btnNo.style.display = 'none';
+      btnSi.style.display = 'inline-block';
+      btnSi.classList.add('animacion-si');
+      btnSi.onclick = () => alert("¡Qué emoción! ❤️ Nuestra cita será el domingo 22: primero al cine 🎬 y después comida china 🍜. Escríbeme para que fijemos juntos la hora ✨");
+    }
+
+    // Generar corazones flotando
+    function crearCorazon() {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon');
+      corazon.innerHTML = '❤️';
+      corazon.style.left = Math.random() * window.innerWidth + 'px';
+      corazon.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 6000);
+    }
+    setInterval(crearCorazon, 800);
+  </script>
+</body>
+</html>
